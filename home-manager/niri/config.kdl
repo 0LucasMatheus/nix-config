@@ -1,0 +1,163 @@
+  binds {
+    
+    Mod+Return repeat=false { spawn "kitty"; }
+    Mod+E { spawn "dolphin"; }
+    Mod+B repeat=false { spawn "zen-twilight"; }
+    Mod+P repeat=false { spawn "sh" "-c" "sel=$(find \"$HOME\"/Projects -mindepth 1 -maxdepth 1 -type d -printf '%f\\n' | sort | fuzzel --dmenu --prompt 'Projeto: '); [ -n \"$sel\" ] && \"$HOME/.local/share/vscode-vibrancy/current/bin/codium\" \"$HOME/Projects/$sel\""; }
+    Mod+apostrophe repeat=false { spawn "sh" "-c" "kitty --directory \"$HOME/nix\""; }
+
+    Mod+Q { close-window; }
+
+
+    Mod+left { focus-column-left; }
+    Mod+right { focus-column-right; }
+    Mod+up { focus-window-up; }
+    Mod+down { focus-window-down; }
+
+
+    Mod+Alt+left { move-column-left; }
+    Mod+Alt+right { move-column-right; }
+    Mod+Alt+up { move-window-up; }
+    Mod+Alt+down { move-window-down; }
+
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+
+
+    Mod+space { maximize-column; }
+    Mod+Alt+space { fullscreen-window; }
+
+
+    Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | wl-copy"; }
+    Shift+Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | tee ~/Pictures/Screenshots/\"Screenshot from $(date +%Y-%m-%d_%H-%M-%S).png\" | wl-copy"; }
+    Mod+Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty -f - --copy-command wl-copy --actions-on-enter=save-to-clipboard,exit"; }
+    Mod+Shift+Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty -f - --copy-command wl-copy -o ~/Pictures/Screenshots/\"Screenshot from $(date +%Y-%m-%d_%H-%M-%S).png\" --actions-on-enter=save-to-clipboard,save-to-file,exit"; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+
+    Mod+Shift+E { quit; }
+
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "-e4" "-n1" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-e4" "-n1" "set" "5%-"; }
+    Mod+X repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+}
+prefer-no-csd
+
+window-rule {
+    match is-focused=true
+    background-effect {
+        blur true
+    }
+}
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+    draw-border-with-background false
+    background-effect {
+        blur true
+        xray false
+    }
+}
+layer-rule {
+    match namespace="^noctalia-backdrop"
+    place-within-backdrop true
+    background-effect {
+        xray false
+    }
+
+
+}
+window-rule { match app-id=r"kitty"; default-column-width { proportion 0.33333; }; }
+window-rule { match app-id=r"zen-twilight"; default-column-width { proportion 1.0; }; }
+window-rule { match app-id=r"codium"; default-column-width { proportion 1.0; }; }
+hotkey-overlay {
+    skip-at-startup
+}
+blur {
+    passes 2
+    offset 2.0000000000000004
+    noise 0.0
+    saturation 1.0
+}
+
+input {
+    warp-mouse-to-focus
+
+    focus-follows-mouse max-scroll-amount="33%"
+
+    keyboard {
+        xkb {
+            layout "br,us"
+            variant "abnt2,"
+            options "compose:ralt"
+        }
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        scroll-factor 0.5
+    }
+    mouse {
+
+        natural-scroll
+    }
+}
+layout {
+
+    focus-ring {
+        width 2
+    }
+    gaps 10
+
+    center-focused-column "never"
+}
+animations {
+
+    window-open { curve "cubic-bezier" 0.17 0.67 0.83 0.67; }
+    window-close { curve "cubic-bezier" 0.17 0.67 0.83 0.67; }
+    window-movement { curve "cubic-bezier" 0.17 0.67 0.83 0.67; }
+    window-resize { curve "cubic-bezier" 0.17 0.67 0.83 0.67; }
+    overview-open-close { curve "cubic-bezier" 0.17 0.67 0.83 0.67; }
+}
+environment {
+    NIXOS_OZONE_WL "1"
+}
+cursor {
+    xcursor-theme "Cartoonish-Bold"
+    xcursor-size 24
+}
+spawn-at-startup "noctalia"
+output "eDP-1" {
+    mode "1920x1200@59.999"
+
+    scale 1.25
+
+    transform "normal"
+    position x=0 y=0
+}
+
+gestures {
+    hot-corners {
+        top-left
+    }
+}
+
+include "noctalia.kdl"

@@ -1,0 +1,283 @@
+config_version = 2
+
+[audio]
+enable_overdrive = true
+
+[bar]
+order = [ "bar1", "bar2" ]
+
+    [bar.bar1]
+    background_opacity = 0.59999998658895493
+    center = [ "cat", "clock", "notifications" ]
+    end = [ "media", "battery" ]
+    font_weight = 400
+    margin_ends = 400
+    panel_overlap = 0
+    start = [ "wallpaper", "workspaces" ]
+    thickness = 24
+
+    [bar.bar2]
+    background_opacity = 0.59999998658895493
+    center = [ "group:g1", "group:g2", "group:g3", "group:g4" ]
+    enabled = true
+    end = [ "tray", "launcher", "caffeine", "notes", "widget", "clipboard", "power_profile", "keyboard_layout" ]
+    layer = "overlay"
+    margin_ends = 0
+    position = "bottom"
+    reserve_space = false
+    smart_auto_hide = true
+    start = [ "network", "bluetooth", "brightness", "volume", "weather" ]
+    thickness = 24
+
+        [[bar.bar2.capsule_group]]
+        enabled = true
+        fill = "secondary"
+        id = "g2"
+        members = [ "cpu", "temp" ]
+        opacity = 0.20000000298023224
+        padding = 6.0
+
+        [[bar.bar2.capsule_group]]
+        enabled = true
+        fill = "tertiary"
+        id = "g1"
+        members = [ "network_rx", "network_tx" ]
+        opacity = 0.20000000298023224
+        padding = 6.0
+
+        [[bar.bar2.capsule_group]]
+        enabled = true
+        fill = "tertiary"
+        id = "g3"
+        members = [ "ram", "SWAP" ]
+        opacity = 0.20000000298023224
+        padding = 6.0
+
+        [[bar.bar2.capsule_group]]
+        enabled = false
+        fill = "primary"
+        id = "g4"
+        members = [ "GPU", "GPU_TEMP", "GPU_VRAM" ]
+        opacity = 0.20000000298023224
+        padding = 6.0
+
+[battery]
+warning_threshold = 15
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 768.0
+    cy = 841.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+
+[notification]
+background_opacity = 0.79999998211860657
+layer = "overlay"
+offset_y = 0
+
+[osd]
+background_opacity = 0.59999998658895493
+orientation = "vertical"
+position_vertical = "center_left"
+scale = 0.7500000037252903
+
+[plugin_settings."oldirtty/color_picker"]
+panel_open_near_click = true
+panel_placement = "attached"
+
+[plugins]
+enabled = [ "dotnetrob/cat", "oldirtty/color_picker", "noctalia/kaomoji", "noctalia/notes" ]
+
+[shell]
+clipboard_history_max_entries = 30
+password_style = "random"
+polkit_agent = true
+screen_time_enabled = true
+
+    [shell.launcher]
+    app_grid = true
+
+    [shell.panel]
+    clipboard_placement = "attached"
+    launcher_placement = "attached"
+    open_near_click_clipboard = true
+    open_near_click_launcher = true
+    transparency_mode = "soft"
+    wallpaper_placement = "floating"
+
+    [shell.screen_corners]
+    enabled = true
+
+    [shell.keyboard_layout.custom_labels]
+    "Portuguese (Brazil)" = "BR"
+
+[theme]
+builtin = "Noctalia"
+community_palette = "Oxocarbon"
+mode = "dark"
+wallpaper_scheme = "m3-tonal-spot"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "kcolorscheme", "kitty", "niri", "qt" ]
+    community_ids = [ "vscode", "discord", "steam", "telegram" ]
+
+[wallpaper]
+directory = "/home/lunomeu/Pictures/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/lunomeu/Pictures/Wallpapers/shadowshouse1.jpg"
+
+    [wallpaper.last]
+    path = "/home/lunomeu/Pictures/Wallpapers/shadowshouse1.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/lunomeu/Pictures/Wallpapers/shadowshouse1.jpg"
+
+[weather]
+refresh_minutes = 120
+
+[widget.GPU]
+stat = "gpu_usage"
+type = "sysmon"
+
+[widget.GPU_TEMP]
+stat = "gpu_temp"
+type = "sysmon"
+
+[widget.GPU_VRAM]
+enabled = false
+stat = "gpu_vram"
+type = "sysmon"
+
+[widget.SWAP]
+show_value = true
+glyph = "arrows-exchange"
+stat = "swap_pct"
+type = "sysmon"
+
+[widget.battery]
+color = "primary"
+display_mode = "graphic"
+
+[widget.bluetooth]
+color = "secondary"
+show_label = true
+
+[widget.brightness]
+color = "primary"
+
+[widget.cat]
+cat_color = "secondary"
+cat_color_mode = "custom"
+cat_size = 33
+type = "dotnetrob/cat:cat"
+
+[widget.clipboard]
+color = "secondary"
+
+[widget.clock]
+scale = 1.1500000000000001
+
+[widget.cpu]
+show_value = true
+
+[widget.keyboard_layout]
+capsule = true
+capsule_fill = "secondary"
+capsule_opacity = 0.20000000000000001
+color = "secondary"
+display = "short"
+
+
+[widget.launcher]
+color = "secondary"
+
+[widget.media]
+art_size = 25
+color = "tertiary"
+max_length = 200
+
+[widget.network]
+color = "primary"
+icon_color = "secondary"
+show_vpn_label = true
+
+[widget.network_rx]
+show_value = true
+
+[widget.network_tx]
+show_value = true
+
+[widget.notes]
+type = "noctalia/notes:notes"
+
+[widget.notifications]
+color = "secondary"
+
+[widget.power_profile]
+color = "primary"
+
+[widget.ram]
+show_value = true
+stat = "ram_pct"
+
+[widget.sysmon]
+stat = "swap_pct"
+
+[widget.temp]
+show_value = true
+
+[widget.volume]
+color = "secondary"
+
+[widget.wallpaper]
+color = "tertiary"
+
+[widget.weather]
+capsule = true
+capsule_foreground = "primary"
+capsule_opacity = 0.40000000000000002
+
+[widget.widget]
+type = "oldirtty/color_picker:widget"
+
+[widget.workspaces]
+empty_color = "tertiary"
+style = "minimal"
