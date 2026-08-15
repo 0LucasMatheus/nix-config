@@ -16,7 +16,11 @@
   };
 
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "0LucasMatheus";
+    userEmail = "lucasmatheus5305@gmail.com";
+  };
 
   programs.direnv = {
     enable = true;
