@@ -19,4 +19,9 @@
 
   services.udisks2.enable = true;
   services.gvfs.enable = true;
+
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
+    HandlePowerKeyLongPress = "poweroff";
+  };
 }
