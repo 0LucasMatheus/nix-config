@@ -60,6 +60,7 @@
         ".zen"
         ".anydesk"
         ".config/VSCodium"
+        ".config/vesktop"
         ".vscode-oss"
         ".claude"
         ".config/nirimod"
