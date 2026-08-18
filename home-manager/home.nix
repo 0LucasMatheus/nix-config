@@ -93,6 +93,9 @@
    };
 
   home.packages = with pkgs; [
+    vesktop
+    obs-studio
+    hyprpicker
     btop
     nano
     nautilus
@@ -102,6 +105,7 @@
     ffmpeg
     ntfs3g
     poppler-utils
+    j
     exiftool
     fd
     glib

@@ -58,10 +58,12 @@
     users.lunomeu = {
       directories = [
         ".zen"
+        ".anydesk"
         ".config/VSCodium"
         ".vscode-oss"
         ".claude"
         ".config/nirimod"
+        ".config/obs-studio"
         ".local/state/noctalia"
         ".local/share/vscode-vibrancy"
         ".config/vscode-vibrancy-continued"
